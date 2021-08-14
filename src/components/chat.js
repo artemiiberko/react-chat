@@ -13,6 +13,12 @@ const Chat = () => {
   const [messages, loading] = useCollectionData(
     firestore.collection("messages").orderBy("createdAt")
   )
+  var Scroll = () => {
+    setTimeout(function () {
+      var objDiv = document.getElementById("change")
+      objDiv.scrollTop = objDiv.scrollHeight
+    }, 1)
+  }
 
   const sendMessage = async () => {
     firestore.collection("messages").add({
@@ -36,6 +42,8 @@ const Chat = () => {
         style={{ height: window.innerHeight - 70, marginTop: 20 }}
       >
         <div
+          id="change"
+          onChange={Scroll()}
           style={{
             width: "60%",
             height: "75vh",
